@@ -2,3 +2,13 @@ My dotfiles.
 
 Run "install.sh" to install.
 Run "install.sh -f" to destructively install.
+
+TODO
+----
+Put title on terminal
+Merge bash_login and bashrc on Mac.  Get git completion working there, too.
+Set vi tabs to 2
+Variable email address in gitconfig
+Variable home directory in gitconfig
+IDE settings (?)
+Mozilla settings (?)

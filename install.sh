@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# dot file install script.  It's written in shell script to avoid needing to
+# install some other scritping language just to get this to work.
+
 display_usage ()
 {
 	echo "install.sh [-f]"
@@ -20,6 +23,11 @@ files_exist ()
 		echo ".bash_profile already exists"
 		safe=0
 	fi
+
+	if [ -e ~/.bashrc ]; then
+		echo ".bashrc already exists"
+		safe=0
+	fi
 	
 	if [ -e ~/.gitconfig ]; then
 		echo ".gitconfig already exists"
@@ -28,6 +36,11 @@ files_exist ()
 	
 	if [ -e ~/.gitignore ]; then
 		echo ".gitignore already exists"
+		safe=0
+	fi
+	
+	if [ -e ~/.vimrc ]; then
+		echo ".vimrc already exists"
 		safe=0
 	fi
 	
@@ -53,13 +66,20 @@ else
 	exit
 fi
 
-rm -rf ~/.bash ~/.bash_profile ~/.gitconfig ~/.gitignore
+rm -rf ~/.bash ~/.bash_profile ~/.bashrc ~/.gitconfig ~/.gitignore ~/.vimrc
 
 dirpath=`pwd`
+uname=`uname`
 
 ln -s $dirpath/bash ~/.bash
-ln -s $dirpath/bash_profile ~/.bash_profile
+if [ $uname = "Linux" ]; then
+	ln -s $dirpath/bash_profile.work ~/.bash_profile
+else
+	ln -s $dirpath/bash_profile ~/.bash_profile
+fi
+ln -s $dirpath/bashrc ~/.bashrc
 ln -s $dirpath/gitconfig ~/.gitconfig
 ln -s $dirpath/gitignore ~/.gitignore
+ln -s $dirpath/vimrc ~/.vimrc
 
 echo "Done!"
