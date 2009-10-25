@@ -1,19 +1,22 @@
 [user]
 	name = David L. Brown
 	email = dbrown0708@gmail.com
-
 [alias]
 	stat = status
 	co = checkout
-
 [apply]
 	whitespace = strip
-
 [diff]
 	color = auto
 	rename = color
-
 [status]
 	color = auto
 [git-tmbundle]
 	gitx-path = /usr/local/bin
+[core]
+	excludesfile = ~/.gitignore
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
