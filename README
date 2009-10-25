@@ -5,8 +5,8 @@ Run "install.sh -f" to destructively install.
 
 TODO
 ----
+Check color ls support for Linux.  Can it be the same as for Mac?
 Put title on terminal
-Merge bash_login and bashrc on Mac.  Get git completion working there, too.
 Set vi tabs to 2
 Variable email address in gitconfig
 Variable home directory in gitconfig

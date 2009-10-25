@@ -33,6 +33,9 @@ PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 #    . ~/.bash_aliases
 #fi
 
+# ls color cupport for MacPorts
+export CLICOLOR=1
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
