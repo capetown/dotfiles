@@ -1,3 +1,4 @@
 My dotfiles.
 
-TODO.  install script.
+Run "install.sh" to install.
+Run "install.sh -f" to destructively install.
