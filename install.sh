@@ -24,11 +24,6 @@ files_exist ()
 		safe=0
 	fi
 
-	if [ -e ~/.bashrc ]; then
-		echo ".bashrc already exists"
-		safe=0
-	fi
-	
 	if [ -e ~/.gitconfig ]; then
 		echo ".gitconfig already exists"
 		safe=0
@@ -66,18 +61,13 @@ else
 	exit
 fi
 
-rm -rf ~/.bash ~/.bash_profile ~/.bashrc ~/.gitconfig ~/.gitignore ~/.vimrc
+rm -rf ~/.bash ~/.bash_profile ~/.gitconfig ~/.gitignore ~/.vimrc
 
 dirpath=`pwd`
 uname=`uname`
 
 ln -s $dirpath/bash ~/.bash
-if [ $uname = "Linux" ]; then
-	ln -s $dirpath/bash_profile.work ~/.bash_profile
-else
-	ln -s $dirpath/bash_profile ~/.bash_profile
-fi
-ln -s $dirpath/bashrc ~/.bashrc
+ln -s $dirpath/bash_profile ~/.bash_profile
 ln -s $dirpath/gitconfig ~/.gitconfig
 ln -s $dirpath/gitignore ~/.gitignore
 ln -s $dirpath/vimrc ~/.vimrc
