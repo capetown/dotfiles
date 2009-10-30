@@ -1,3 +1,4 @@
+set autoread
 set tabstop=2
 set incsearch
 syntax on
