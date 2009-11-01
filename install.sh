@@ -14,6 +14,11 @@ files_exist ()
 {
 	local safe=1
 	
+	if [ -e ~/.autotest ]; then
+		echo ".autotest already exists"
+		safe=0
+	fi
+
 	if [ -e ~/.bash ]; then
 		echo ".bash already exists"
 		safe=0
@@ -31,6 +36,11 @@ files_exist ()
 	
 	if [ -e ~/.gitignore ]; then
 		echo ".gitignore already exists"
+		safe=0
+	fi
+	
+	if [ -e ~/.irbrc ]; then
+		echo ".irbrc already exists"
 		safe=0
 	fi
 	
@@ -61,15 +71,17 @@ else
 	exit
 fi
 
-rm -rf ~/.bash ~/.bash_profile ~/.gitconfig ~/.gitignore ~/.vimrc
+rm -rf ~/.autotest ~/.bash ~/.bash_profile ~/.gitconfig ~/.gitignore ~/.irbrc ~/.vimrc
 
 dirpath=`pwd`
 uname=`uname`
 
+ln -s $dirpath/autotest ~/.autotest
 ln -s $dirpath/bash ~/.bash
 ln -s $dirpath/bash_profile ~/.bash_profile
 ln -s $dirpath/gitconfig ~/.gitconfig
 ln -s $dirpath/gitignore ~/.gitignore
+ln -s $dirpath/irbrc ~/.irbrc
 ln -s $dirpath/vimrc ~/.vimrc
 
 echo "Done!"
