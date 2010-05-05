@@ -1,4 +1,5 @@
 # Stuff for AccuRev
-export ACCUREV_IGNORE_ELEMS=".git .gitignore out dist classes *.class gen report *.i* GenDevAcaXml.xml"
+export ACCUREV_IGNORE_ELEMS=".git .gitignore out dist classes *.swp *.class report *.i* GenDevAcaXml.xmli target"
 
 export EDITOR=vim
+export AC_EDITOR_GUI=gvim

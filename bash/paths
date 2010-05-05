@@ -21,4 +21,13 @@ elif [ $uname = "Linux" ]; then
 	# Stuff needed for ant
 	export ANT_HOME=/opt/ant
 	export PATH=$ANT_HOME/bin:$PATH
+
+	# stuff needed for maven
+	export JAVA_HOME=/usr/lib/jvm/java-6-sun
+	export M2_HOME=/opt/maven
+	export PATH=$M2_HOME/bin:$PATH
+
+	export PATH=/opt/pmd/bin:$PATH
+	export PATH=/opt/jmeter/bin:$PATH
+	export PATH=/opt/eclipse:$PATH
 fi
