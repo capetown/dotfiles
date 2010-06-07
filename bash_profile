@@ -65,3 +65,5 @@ else
 		fi
     . ~/.bash/git_completion.bash
 fi
+
+. ~/.bash/completion-ruby/completion-ruby-all
