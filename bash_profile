@@ -7,7 +7,7 @@ source ~/.bash/config
 [ -z "$PS1" ] && return
 
 # History settings
-export HISTSIZE=100000
+export HISTSIZE=1000
 export HISTCONTROL=erasedups
 shopt -s histappend
 # Save and reload the history after each command finishes
