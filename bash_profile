@@ -22,7 +22,7 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+PS1='\[\033]0;Terminal\007\][\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
