@@ -7,7 +7,7 @@ source ~/.bash/config
 [ -z "$PS1" ] && return
 
 # History settings
-export HISTSIZE=100000
+export HISTSIZE=1000
 export HISTCONTROL=erasedups
 shopt -s histappend
 # Save and reload the history after each command finishes
@@ -22,7 +22,7 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+PS1='\[\033]0;Terminal\007\][\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
