@@ -15,7 +15,7 @@
 	gitx-path = /usr/local/bin
 [core]
 	excludesfile = ~/.gitignore
-	autocrlf = input
+	autocrlf = false
 [color]
 	branch = auto
 	diff = auto
