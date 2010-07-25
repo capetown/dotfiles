@@ -3,14 +3,16 @@ require 'autotest/growl'
 require 'autotest/restart'
 require 'autotest/fsevent'
 
+Autotest::Growl::clear_terminal = false
+
 Autotest.add_hook :initialize do |autotest|
   %w{.git .svn .hg .DS_Store ._* vendor tmp log doc}.each do |exception|
     autotest.add_exception(exception)
   end
-end
-
-Autotest.add_hook :initialize do |autotest|
-  autotest.add_mapping %r%^test/(helpers)/.*rb$% do |filename, _|
-    filename
+  
+  autotest.add_mapping %r%^test/factories/.*\.rb$% do |filename, match_data|
+    autotest.files_matching %r%^test/(unit|controllers|views|functional)/.*_test\.rb$%
   end
+  
+  false
 end
