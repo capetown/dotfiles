@@ -3,7 +3,7 @@ require 'autotest/growl'
 require 'autotest/restart'
 require 'autotest/fsevent'
 
-Autotest::Growl::clear_terminal = false
+# Autotest::Growl::clear_terminal = false
 
 Autotest.add_hook :initialize do |autotest|
   %w{.git .svn .hg .DS_Store ._* vendor tmp log doc}.each do |exception|
@@ -11,6 +11,15 @@ Autotest.add_hook :initialize do |autotest|
   end
   
   autotest.add_mapping %r%^test/factories/.*\.rb$% do |filename, match_data|
+    autotest.files_matching %r%^test/(unit|controllers|views|functional)/.*_test\.rb$%
+  end
+  
+  # remove the exceptions added by autotest-rails, then readd them w/o test.sqlite3
+  autotest.remove_exception %r%^\./(?:db|doc|log|public|script|tmp|vendor)%
+  autotest.add_exception %r%^\./(?:doc|log|public|script|tmp|vendor)%
+  autotest.add_exception %r%^\./db/(?:migrate|(development\.sqlite3|.*\.rb)$)%
+  
+  autotest.add_mapping %r%^db/test.sqlite3$% do |filename, match_data|
     autotest.files_matching %r%^test/(unit|controllers|views|functional)/.*_test\.rb$%
   end
   
