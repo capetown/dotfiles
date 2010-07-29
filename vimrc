@@ -13,3 +13,5 @@ set softtabstop=2
 set wildmode=longest:full
 set wildmenu
 
+let mapleader = ","
+:au FocusLost *.rb :wa
