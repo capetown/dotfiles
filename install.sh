@@ -48,6 +48,11 @@ files_exist ()
 		echo ".vimrc already exists"
 		safe=0
 	fi
+
+	if [ -e ~/.vim ]; then
+		echo ".vim already exists"
+		safe=0
+	fi
 	
 	return $safe
 }
@@ -71,7 +76,7 @@ else
 	exit
 fi
 
-rm -rf ~/.autotest ~/.bash ~/.bash_profile ~/.gitconfig ~/.gitignore ~/.irbrc ~/.vimrc
+rm -rf ~/.autotest ~/.bash ~/.bash_profile ~/.gitconfig ~/.gitignore ~/.irbrc ~/.vimrc ~/.vim
 
 dirpath=`pwd`
 uname=`uname`
@@ -83,5 +88,6 @@ ln -s $dirpath/gitconfig ~/.gitconfig
 ln -s $dirpath/gitignore ~/.gitignore
 ln -s $dirpath/irbrc ~/.irbrc
 ln -s $dirpath/vimrc ~/.vimrc
+ln -s $dirpath/vim ~/.vim
 
 echo "Done!"
