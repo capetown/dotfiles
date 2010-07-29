@@ -5,7 +5,7 @@ when 'Darwin'
   require 'autotest/growl'
   require 'autotest/fsevent'
 when 'Linux'
-	require "test_notifier/runner/autotest"
+	# require "test_notifier/runner/autotest"
 end
 
 # Autotest::Growl::clear_terminal = false
