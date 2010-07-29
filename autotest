@@ -1,16 +1,30 @@
 require 'redgreen/autotest'
-require 'autotest/growl'
 require 'autotest/restart'
-require 'autotest/fsevent'
+if `uname`.chomp == 'Darwin'
+  require 'autotest/growl'
+  require 'autotest/fsevent'
+end
 
 # Autotest::Growl::clear_terminal = false
 
 Autotest.add_hook :initialize do |autotest|
-  %w{.git .svn .hg .DS_Store ._* vendor tmp log doc}.each do |exception|
+  %w{.git .svn .hg .DS_Store vendor tmp log doc nbproject}.each do |exception|
     autotest.add_exception(exception)
   end
   
   autotest.add_mapping %r%^test/factories/.*\.rb$% do |filename, match_data|
+    autotest.files_matching %r%^test/(unit|controllers|views|functional)/.*_test\.rb$%
+  end
+
+	autotest.add_mapping %r%^lib/(.*)\.rb$% do |filename, matcher|
+		autotest.files_matching %r%^test/unit/#{matcher[1]}_test\.rb$%
+	end
+
+  autotest.remove_exception %r%^\./(?:db|doc|log|public|script|tmp|vendor)%
+  autotest.add_exception %r%^\./(?:doc|log|public|script|tmp|vendor)%
+  autotest.add_exception %r%^\./db/(?:migrate|(development\.sqlite3|.*\.rb)$)%
+
+  autotest.add_mapping %r%^db/test.sqlite3$% do |filename, match_data|
     autotest.files_matching %r%^test/(unit|controllers|views|functional)/.*_test\.rb$%
   end
   
