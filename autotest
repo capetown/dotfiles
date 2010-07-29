@@ -1,8 +1,11 @@
 require 'redgreen/autotest'
 require 'autotest/restart'
-if `uname`.chomp == 'Darwin'
+case `uname`.chomp
+when 'Darwin'
   require 'autotest/growl'
   require 'autotest/fsevent'
+when 'Linux'
+	require "test_notifier/runner/autotest"
 end
 
 # Autotest::Growl::clear_terminal = false
