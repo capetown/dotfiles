@@ -11,7 +11,7 @@ end
 # Autotest::Growl::clear_terminal = false
 
 Autotest.add_hook :initialize do |autotest|
-  %w{.git .svn .hg .DS_Store vendor tmp log doc nbproject}.each do |exception|
+  %w{.git .svn .hg .DS_Store vendor tmp log doc .idea *.iml nbproject}.each do |exception|
     autotest.add_exception(exception)
   end
   
