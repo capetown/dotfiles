@@ -20,15 +20,7 @@ Autotest.add_hook :initialize do |autotest|
 		autotest.files_matching %r%^test/unit/#{matcher[1]}_test\.rb$%
 	end
 
-  autotest.remove_exception %r%^\./(?:db|doc|log|public|script|tmp|vendor)%
-  autotest.add_exception %r%^\./(?:doc|log|public|script|tmp|vendor)%
-  autotest.add_exception %r%^\./db/(?:migrate|(development\.sqlite3|.*\.rb)$)%
-
-  autotest.add_mapping %r%^db/test.sqlite3$% do |filename, match_data|
-    autotest.files_matching %r%^test/(unit|controllers|views|functional)/.*_test\.rb$%
-  end
-  
-  # remove the exceptions added by autotest-rails, then readd them w/o test.sqlite3
+ # remove the exceptions added by autotest-rails, then readd them w/o test.sqlite3
   autotest.remove_exception %r%^\./(?:db|doc|log|public|script|tmp|vendor)%
   autotest.add_exception %r%^\./(?:doc|log|public|script|tmp|vendor)%
   autotest.add_exception %r%^\./db/(?:migrate|(development\.sqlite3|.*\.rb)$)%
