@@ -54,6 +54,11 @@ files_exist ()
 		safe=0
 	fi
 	
+	if [ -e ~/.watchr ]; then
+		echo ".watchr already exists"
+		safe=0
+	fi
+
 	return $safe
 }
 
@@ -76,7 +81,7 @@ else
 	exit
 fi
 
-rm -rf ~/.autotest ~/.bash ~/.bash_profile ~/.gitconfig ~/.gitignore ~/.irbrc ~/.vimrc ~/.vim
+rm -rf ~/.autotest ~/.bash ~/.bash_profile ~/.gitconfig ~/.gitignore ~/.irbrc ~/.vimrc ~/.vim ~/.watchr
 
 dirpath=`pwd`
 uname=`uname`
@@ -89,5 +94,6 @@ ln -s $dirpath/gitignore ~/.gitignore
 ln -s $dirpath/irbrc ~/.irbrc
 ln -s $dirpath/vimrc ~/.vimrc
 ln -s $dirpath/vim ~/.vim
+ln -s $dirpath/watchr ~/.watchr
 
 echo "Done!"
