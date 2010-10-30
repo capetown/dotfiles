@@ -1,4 +1,13 @@
-require 'redgreen/autotest'
+# Install the following gems
+#
+# sudo gem install autotest
+# sudo gem install autotest-fsevent (osx only)
+# sudo gem install autotest-growl
+# sudo gem install mynyml-redgreen
+# sudo gem install autotest-rails-pure
+
+
+require 'redgreen'
 require 'autotest/restart'
 case `uname`.chomp
 when 'Darwin'
